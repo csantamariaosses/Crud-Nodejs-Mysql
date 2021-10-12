@@ -1,0 +1,65 @@
+<%- include('partials/_header'); %>
+
+
+<div class="container">
+    <div class="row mt-4">
+
+        <div class="col-sm-8">
+            <H3>Customers</H3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nro.</th>
+                        <th>Id</th>
+                        <th>Name.</th>
+                        <th>Address.</th>
+                        <th>Phone.</th>
+                        <th>Accion.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% if ( data ) { %>
+                        <% for( var i = 0; i< data.length; i++ ) {%>
+                    <tr>
+                        <td><%=(i + 1)%></td>
+                        <td><%=data[i].id%></td>
+                        <td><%=data[i].name%></td>
+                        <td><%=data[i].address%></td>
+                        <td><%=data[i].phone%></td>
+                        <td>
+                            <a href="/delete/<%=data[i].id%>" class="btn btn-danger">Delete</a>
+                            <a href="/edit/<%=data[i].id%>" class="btn btn-info">Edit</a>
+                        </td>
+                    </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <H3>formulario</H3>
+            <div class="card">
+                <div class="card-body">
+                    <form name="frm" action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Nombre" class="form-control">                    
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" placeholder="Direccion" class="form-control">                    
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone" placeholder="Telefono" class="form-control">                    
+                        </div>
+                        <button class="btn btn-primary btn-block">Guardar</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<%- include('partials/_footer'); %>
+
+
